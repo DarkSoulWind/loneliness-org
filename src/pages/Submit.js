@@ -12,7 +12,7 @@ const Submit = () => {
 
     return (
         <div>
-            <h3>Submit to me</h3>
+            <h3>Submit a post</h3>
             <form>
                 <label>Title:</label>
                 <input type='text' placeholder='Post title...'/>
