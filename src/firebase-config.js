@@ -1,0 +1,22 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDM9oIJXQw6MuelOlpPaGHS3ngEMfmUMgY",
+  authDomain: "loneliness-5c1a4.firebaseapp.com",
+  projectId: "loneliness-5c1a4",
+  storageBucket: "loneliness-5c1a4.appspot.com",
+  messagingSenderId: "265535564384",
+  appId: "1:265535564384:web:e22beb2859926a45e97105"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
