@@ -15,7 +15,7 @@ function App() {
     <Router>
       <nav>
         <Link className='link' to='/'>Home</Link>
-        <Link className='link' to='/submit'>Submit a post</Link>
+        {isAuth && <Link className='link' to='/submit'>Submit a post</Link>}
         <Link className='link' to='/about'>About</Link>
         <Link className='link' to='/login'>{isAuth ? 'Logout' : 'Login'}</Link>
       </nav>
