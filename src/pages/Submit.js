@@ -46,7 +46,10 @@ const Submit = () => {
                 method: 'POST',
                 body: data
             }
-        )
+        ).catch(err => {
+            console.log(err);
+            alert('Error: File too large to upload.');
+        })
         const file = await response.json();
         setImage(file.secure_url)
         console.log(file);
