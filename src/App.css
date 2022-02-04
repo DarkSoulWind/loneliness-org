@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Oswald:wght@300&display=swap');
+
+body {
+  font-family: 'Oswald';
+  margin: 0;
+}
+
 .App {
   text-align: center;
+  font-family: 'DM Serif Display' serif;
 }
 
 #circular-progress {
@@ -15,7 +23,8 @@ nav .link {
   float: left;
   color: white;
   padding: 1em 1em;
-  font-size: 1em;
+  font-family: 'DM Serif Display', serif;
+  font-size: 100%;
 }
 
 .post {
@@ -31,4 +40,37 @@ nav .link {
 
 .likes-count, .likes-button {
   width: 25%;
+}
+
+.submitPostPage {
+  text-align: center;
+}
+
+.submitPostContainer {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.inputPost {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'DM Serif Display';
+}
+
+.submitPost {
+  margin-top: 2em;
+  width: 50%;
+  height: 4em;
+  font-size: 1em;
+  font-family: 'Oswald';
+}
+
+.submitPost:hover {
+  background-color: grey;
+  color: white;
 }
