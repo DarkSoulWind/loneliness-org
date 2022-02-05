@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { auth, db } from '../firebase-config';
 import { updateDoc, doc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { FaHeart } from 'react-icons/fa';
@@ -35,11 +35,12 @@ const Post = ({ post }) => {
 
     return (
         <Card style={{'marginTop' : '1em'}}>
-            <Card.Header>{post.displayname} at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}</Card.Header>
+            <Card.Header><strong>{post.displayname}</strong> at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}</Card.Header>
             {post.image && <Card.Img variant='top' src={post.image}/>}
             <Card.Body>
                 <Card.Title>{post.title}</Card.Title>
                 <Card.Text>{post.description}</Card.Text>
+
                 <FaHeart onClick={likePost} style={{ color: liked ? 'red' : 'black' }} />
                 
             </Card.Body>

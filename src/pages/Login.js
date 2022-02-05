@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, provider } from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
 
+import LoginPage from '../components/LoginPage';
+import ProfilePage from '../components/ProfilePage';
+
 const Login = ({ isAuth, setIsAuth }) => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const signInWithGoogle = () => {
+        setLoading(true);
         signInWithPopup(auth, provider).then(result => {
             localStorage.setItem('isAuth', true);
             setIsAuth(true);
-            console.log(result);
+            setLoading(false);
             navigate('/');
+        })
+        .catch(() => {
+            setLoading(false);
         })
     }
 
@@ -24,9 +32,11 @@ const Login = ({ isAuth, setIsAuth }) => {
 
     return (
         <div style={{'paddingTop' : '4em'}}>
-            <h3>Logged in: {isAuth ? `indeed, ${auth?.currentUser?.displayName} with UID: ${auth?.currentUser.uid}` : 'nope not at all'}</h3>
-            {isAuth ? (<button onClick={signUserOut}>Logout</button>) : (<button onClick={signInWithGoogle}>Login with google</button>)}
-
+            {isAuth ? (
+                <ProfilePage signUserOut={signUserOut} />
+            ) : (
+                <LoginPage loading={loading} signUserIn={signInWithGoogle} />
+            )}
         </div>
     );
 };

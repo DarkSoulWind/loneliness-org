@@ -97,7 +97,9 @@ const Submit = ({ setSuccess }) => {
                         </Form.Group>
                         
                         {error && <Alert variant='danger' onClose={() => setError('')} dismissible>{error}</Alert>}
-                        <Button onClick={submitPost}>Submit</Button>
+                        <div className='d-grid gap-2'>
+                            <Button size='lg' onClick={submitPost}>Submit</Button>
+                        </div>
                     </Form>
                 </Card.Body>
             </Card>

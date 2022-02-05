@@ -20,7 +20,7 @@ function App() {
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
             {isAuth && <Nav.Link as={Link} to='/submit'>Submit</Nav.Link>}
             <Nav.Link as={Link} to='/about'>About</Nav.Link>
-            <Nav.Link as={Link} to='/login'>{isAuth ? 'Logout' : 'Login'}</Nav.Link>
+            <Nav.Link as={Link} to='/login'>{isAuth ? 'Profile' : 'Login'}</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
