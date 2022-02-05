@@ -96,7 +96,7 @@ const Submit = () => {
                         )}
                     </div>
 
-                    {error && <Alert style={{'fontSize' : '200%'}} variant='danger'>{error}</Alert>}
+                    {error && <Alert variant='danger' onClose={() => setError('')} dismissible>{error}</Alert>}
                     <input className='submitPost' type='submit' onClick={submitPost}/>
                 </form>
             </div>

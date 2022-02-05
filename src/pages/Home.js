@@ -24,7 +24,7 @@ const Home = () => {
   }, [setPosts]);
 
   return (
-      <div>
+      <div style={{'paddingTop' : '4em'}}>
         {loading && <CircularProgress size='10rem'/>}
         {posts.map((post, index) => (
           <Post post={post} key={index} />

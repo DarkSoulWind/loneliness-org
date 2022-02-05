@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div>
+        <div style={{'paddingTop' : '4em'}}>
             <h3>We are a team trying to stop loneliness.</h3>
         </div>
     );
