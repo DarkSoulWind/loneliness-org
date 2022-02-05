@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
+import { Alert, Form, Card, Button, Container } from 'react-bootstrap';
 
-const Submit = () => {
+const Submit = ({ setSuccess }) => {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -37,7 +37,7 @@ const Submit = () => {
 
         await addDoc(postsCollectionRef, data);
         console.log('Submitted!');
-        alert('Added message!');
+        setSuccess('Post submitted successfully!')
         navigate('/');
     }
 
@@ -68,39 +68,41 @@ const Submit = () => {
     }
 
     return (
-        <div className='submitPostPage'>
-            <div className='submitPostContainer'>
-                <h2>Submit a post</h2>
-                <form>
-                    <label>Title:</label>
-                    <input className='inputPost' type='text' placeholder='Post title...' onChange={e => setTitle(e.target.value)}/>
-                    {title.length < 20 && <h5>Please make your title {20 - title.length} characters longer.</h5>}
-                    
-                    <label>Description:</label>
-                    <textarea 
-                        className='inputPost' 
-                        placeholder='Post description...' 
-                        style={{ 'height': '200px' }}
-                        onChange={e => setDescription(e.target.value)}
-                    />
-                    {description.length < 100 && <h5>Please make your description {100 - description.length} characters longer.</h5>}
+        <Container style={{'marginTop' : '5em'}}>
+            <Card>
+                <Card.Body>
+                    <h2>Submit a post</h2>
+                    <Form>
+                        <Form.Group className='mb-3'>
+                            <Form.Label>Title:</Form.Label>
+                            <Form.Control onChange={e => setTitle(e.target.value)} placeholder='Post title...'/>
+                            {title.length < 20 && <Form.Text>Please make your title {20 - title.length} characters long.</Form.Text>}
+                        </Form.Group>
 
-                    <label>Add an image:</label>
-                    <div className='inputPost'>
-                        <input type='file' name='Image file' onChange={uploadImage}/>
+                        <Form.Group className='mb-3'>
+                            <Form.Label>Description:</Form.Label>
+                            <Form.Control onChange={e => setDescription(e.target.value)} as='textarea' placeholder='Post title...'/>
+                            {description.length < 100 && <Form.Text>Please make your description {100 - description.length} characters long.</Form.Text>}
+                        </Form.Group>
 
-                        {loading ? (
-                            <p>Loading image...</p>
-                        ) : (
-                            image && <img src={image} style={{width: '500px'}} alt='uploaded'/>
-                        )}
-                    </div>
-
-                    {error && <Alert variant='danger' onClose={() => setError('')} dismissible>{error}</Alert>}
-                    <input className='submitPost' type='submit' onClick={submitPost}/>
-                </form>
-            </div>
-        </div>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Add an image:</Form.Label>
+                            <Form.Control onChange={uploadImage} type="file" />
+                            {loading ? (
+                                <p>Loading image...</p>
+                                ) : (
+                                    image && <img src={image} style={{width: '500px'}} alt='uploaded'/>
+                                )
+                            }
+                        </Form.Group>
+                        
+                        {error && <Alert variant='danger' onClose={() => setError('')} dismissible>{error}</Alert>}
+                        <Button onClick={submitPost}>Submit</Button>
+                    </Form>
+                </Card.Body>
+            </Card>
+            
+        </Container>
     );
 };
 

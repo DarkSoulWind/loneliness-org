@@ -9,6 +9,7 @@ import Login from './pages/Login';
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
+  const [success, setSuccess] = useState('');
 
   return (
     <Router>
@@ -24,8 +25,8 @@ function App() {
         </Container>
       </Navbar>
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/submit' element={<Submit />}/>
+        <Route path='/' element={<Home success={success} setSuccess={setSuccess} />}/>
+        <Route path='/submit' element={<Submit setSuccess={setSuccess} />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/login' element={<Login isAuth={isAuth} setIsAuth={setIsAuth}/>}/>
       </Routes>

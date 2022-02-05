@@ -24,7 +24,7 @@ const Login = ({ isAuth, setIsAuth }) => {
 
     return (
         <div style={{'paddingTop' : '4em'}}>
-            <h3>Logged in: {isAuth ? `indeed, ${auth?.currentUser.displayName} with UID: ${auth?.currentUser.uid}` : 'nope not at all'}</h3>
+            <h3>Logged in: {isAuth ? `indeed, ${auth?.currentUser?.displayName} with UID: ${auth?.currentUser.uid}` : 'nope not at all'}</h3>
             {isAuth ? (<button onClick={signUserOut}>Logout</button>) : (<button onClick={signInWithGoogle}>Login with google</button>)}
 
         </div>

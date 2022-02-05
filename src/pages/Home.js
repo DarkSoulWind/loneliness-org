@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { getDocs, collection, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase-config';
 import { CircularProgress } from '@material-ui/core';
+import { Container, Alert, Button } from 'react-bootstrap';
 
 import Post from '../components/Post';
 
-const Home = () => {
+const Home = ({ success, setSuccess }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [visibility, setVisibility] = useState(5);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -24,12 +26,14 @@ const Home = () => {
   }, [setPosts]);
 
   return (
-      <div style={{'paddingTop' : '4em'}}>
+      <Container style={{'padding' : '4em 0em 2em 0em'}}>
+        {success && <Alert onClose={() => setSuccess('')} variant='success' dismissible>{success}</Alert>}
         {loading && <CircularProgress size='10rem'/>}
-        {posts.map((post, index) => (
+        {posts.slice(0, visibility).map((post, index) => (
           <Post post={post} key={index} />
         ))}
-      </div>
+        {visibility < posts.length && <Button style={{'margin' : '10px 0px 10px 0px'}} onClick={() => setVisibility(visibility + 5)}>Show more</Button>}
+      </Container>
   );
 };
 

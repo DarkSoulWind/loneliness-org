@@ -34,21 +34,19 @@ const Post = ({ post }) => {
     }
 
     return (
-        <div className='post'>
-            <Card style={{ 'width' : '60%'}}>
-                {post.image && <Card.Img variant='top' src={post.image}/>}
-                <Card.Header>{post.displayname} at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}</Card.Header>
-                <Card.Body>
-                    <Card.Title>{post.title}</Card.Title>
-                    <Card.Text>{post.description}</Card.Text>
-                    <FaHeart onClick={likePost} style={{ color: liked ? 'red' : 'black' }} />
-                    
-                </Card.Body>
-                <Card.Footer>
-                        {likes} {likes === 1 ? 'like' : 'likes'}
-                </Card.Footer>
-            </Card>
-        </div>
+        <Card style={{'marginTop' : '1em'}}>
+            <Card.Header>{post.displayname} at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}</Card.Header>
+            {post.image && <Card.Img variant='top' src={post.image}/>}
+            <Card.Body>
+                <Card.Title>{post.title}</Card.Title>
+                <Card.Text>{post.description}</Card.Text>
+                <FaHeart onClick={likePost} style={{ color: liked ? 'red' : 'black' }} />
+                
+            </Card.Body>
+            <Card.Footer>
+                    {likes} {likes === 1 ? 'like' : 'likes'}
+            </Card.Footer>
+        </Card>
     )
   }
 
