@@ -32,7 +32,7 @@ const Home = ({ success, setSuccess }) => {
         {posts.slice(0, visibility).map((post, index) => (
           <Post post={post} key={index} />
         ))}
-        {visibility < posts.length && <Button style={{'margin' : '10px 0px 10px 0px'}} onClick={() => setVisibility(visibility + 5)}>Show more</Button>}
+        {visibility < posts.length && <Button style={{'margin' : '20px 0px 10px 10px'}} onClick={() => setVisibility(visibility + 5)}>Show more</Button>}
       </Container>
   );
 };

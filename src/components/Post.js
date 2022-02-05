@@ -34,7 +34,7 @@ const Post = ({ post }) => {
     }
 
     return (
-        <Card style={{'marginTop' : '1em'}}>
+        <Card style={{'marginTop' : '1em', 'marginInline' : '1em'}}>
             <Card.Header><strong>{post.displayname}</strong> at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}</Card.Header>
             {post.image && <Card.Img variant='top' src={post.image}/>}
             <Card.Body>
