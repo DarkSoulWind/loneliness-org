@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState } from 'react';
 import { auth, db } from '../firebase-config';
 import { updateDoc, doc, arrayUnion, arrayRemove, deleteDoc } from 'firebase/firestore';
 import { FaHeart, FaTimes } from 'react-icons/fa';
@@ -10,7 +10,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 const Post = ({ post, setSuccess, posts, setPosts }) => {
     const [liked, setLiked] = useState(post.likes.includes(auth?.currentUser?.uid) || false);
     const [likes, setLikes] = useState(post.likes.length);
-    const [deleted, setDeleted] = useState(false);
     const navigate = useNavigate();
 
     const likePost = async () => {

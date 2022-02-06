@@ -18,7 +18,6 @@ const Home = ({ success, setSuccess }) => {
       const q = query(postsCollectionRef, orderBy('date'));
       const data = await getDocs(q);
       setPosts(data.docs.map(doc => ({ ...doc.data(), id: doc.id })).reverse());
-      console.log(posts);
       setLoading(false);
     }
 

@@ -6,6 +6,8 @@ import { Alert, Form, Card, Button, Container } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
+const FilterProfanity = require('leo-profanity');
+
 const Submit = ({ setSuccess }) => {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
@@ -29,7 +31,6 @@ const Submit = ({ setSuccess }) => {
         }
 
         await addDoc(postsCollectionRef, data);
-        console.log('Submitted!');
         setSuccess('Post submitted successfully!')
         navigate('/');
     }
@@ -60,16 +61,27 @@ const Submit = ({ setSuccess }) => {
         setLoading(false);
     }
 
-    const submitClicked = e => {
-
-        e.preventDefault();
+    const checkIfValid = () => {
         if (title.length < 20) {
             setError('Your title must be at least 20 characters long.')
-            return
+            return false;
         } else if (description.length < 100) {
             setError('Your description must be at least 100 characters long.')
-            return
+            return false;
+        } else if (FilterProfanity.check(title)) {
+            setError('Please remove any profanity words from the title.');
+            return false;
+        } else if (FilterProfanity.check(description)) {
+            setError('Please remove any profanity words from the description.');
+            return false;
         }
+
+        return true;
+    }
+
+    const submitClicked = e => {
+        e.preventDefault();
+        if (!checkIfValid()) return;
 
         confirmAlert({
             title: 'Confirm submission',
