@@ -3,6 +3,8 @@ import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import { Alert, Form, Card, Button, Container } from 'react-bootstrap';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const Submit = ({ setSuccess }) => {
     const navigate = useNavigate();
@@ -14,16 +16,7 @@ const Submit = ({ setSuccess }) => {
 
     const postsCollectionRef = collection(db, 'posts');
 
-    const submitPost = async e => {
-        e.preventDefault();
-        if (title.length < 20) {
-            setError('Your title must be at least 20 characters long.')
-            return
-        } else if (description.length < 100) {
-            setError('Your description must be at least 100 characters long.')
-            return
-        }
-        
+    const submitPost = async () => {
         setError('')
         console.log(auth.currentUser.displayName);
         const data = {
@@ -67,6 +60,31 @@ const Submit = ({ setSuccess }) => {
         setLoading(false);
     }
 
+    const submitClicked = e => {
+
+        e.preventDefault();
+        if (title.length < 20) {
+            setError('Your title must be at least 20 characters long.')
+            return
+        } else if (description.length < 100) {
+            setError('Your description must be at least 100 characters long.')
+            return
+        }
+
+        confirmAlert({
+            title: 'Confirm submission',
+            message: 'Are you sure you want to submit this post?',
+            buttons: [{
+                label: 'Post',
+                onClick: () => submitPost()
+            },
+            {
+                label: 'Cancel',
+                onClick: () => {return}
+            }]
+        })
+    }
+
     return (
         <Container style={{'marginTop' : '5em'}}>
             <Card>
@@ -98,7 +116,7 @@ const Submit = ({ setSuccess }) => {
                         
                         {error && <Alert variant='danger' onClose={() => setError('')} dismissible>{error}</Alert>}
                         <div className='d-grid gap-2'>
-                            <Button size='lg' onClick={submitPost}>Submit</Button>
+                            <Button size='lg' onClick={submitClicked}>Submit</Button>
                         </div>
                     </Form>
                 </Card.Body>

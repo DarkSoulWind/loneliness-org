@@ -30,7 +30,7 @@ const Home = ({ success, setSuccess }) => {
         {success && <Alert onClose={() => setSuccess('')} variant='success' dismissible>{success}</Alert>}
         {loading && <CircularProgress size='10rem'/>}
         {posts.slice(0, visibility).map((post, index) => (
-          <Post post={post} key={index} />
+          <Post post={post} setSuccess={setSuccess} posts={posts} setPosts={setPosts} key={index} />
         ))}
         {visibility < posts.length && <Button style={{'margin' : '20px 0px 10px 10px'}} onClick={() => setVisibility(visibility + 5)}>Show more</Button>}
       </Container>
