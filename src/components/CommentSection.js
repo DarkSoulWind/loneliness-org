@@ -26,7 +26,7 @@ const CommentSection = ({ post }) => {
         }
 
         getComments();
-    }, [])
+    }, [commentsCollectionRef, post.id])
 
     const checkIfValid = () => {
         if (!text) {

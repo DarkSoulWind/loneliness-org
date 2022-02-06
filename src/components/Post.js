@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase-config';
 import { updateDoc, doc, arrayUnion, arrayRemove, deleteDoc, query, where, getDocs, collection } from 'firebase/firestore';
 import { FaHeart, FaTimes, FaComment } from 'react-icons/fa';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -26,7 +26,7 @@ const Post = ({ post, setSuccess, posts, setPosts }) => {
         }
 
         getNumComments();
-    }, [])
+    }, [commentsCollectionRef, post.id])
 
     const likePost = async () => {
         if (!auth.currentUser) {
@@ -108,7 +108,7 @@ const Post = ({ post, setSuccess, posts, setPosts }) => {
 
                 <FaHeart size={20} onClick={likePost} style={{ color: liked ? 'red' : 'black' }} />
                 <FaComment size={20} onClick={commentsClicked} style={{ 'marginLeft' : '1rem' }} />
-                {auth?.currentUser?.displayName == post.displayname && <FaTimes size={25} onClick={deleteClicked} style={{'color' : 'black', 'marginLeft' : '1rem'}} />}
+                {auth?.currentUser?.displayName === post.displayname && <FaTimes size={25} onClick={deleteClicked} style={{'color' : 'black', 'marginLeft' : '1rem'}} />}
                 
             </Card.Body>
             <Card.Footer>

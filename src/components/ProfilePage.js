@@ -12,11 +12,11 @@ const ProfilePage = ({ signUserOut }) => {
             const postsCollectionRef = collection(db, 'posts');
             const q = query(postsCollectionRef, orderBy('date'));
             const data = await getDocs(q);
-            setPosts(data.docs.map(doc => ({ ...doc.data(), id: doc.id })).filter(post => post.displayname == user.displayName).reverse().slice(0, 5));
+            setPosts(data.docs.map(doc => ({ ...doc.data(), id: doc.id })).filter(post => post.displayname === user.displayName).reverse().slice(0, 5));
         }
 
         getPosts();
-    }, [setPosts])
+    }, [user.displayName])
 
     return (
         <Container style={{'marginTop' : '1em', 'marginBottom' : '1em'}}>

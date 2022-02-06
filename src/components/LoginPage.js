@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Button, Card } from 'react-bootstrap';
+import React from 'react';
+import { Button, Card } from 'react-bootstrap';
 
 const LoginPage = ({ signUserIn, loading }) => {
 
     return (
         <Card style={{'marginInline' : '1em', 'textAlign' : 'center'}}>
             <Card.Body>
-                <Card.Title>You must be logged in to like and post</Card.Title>
+                <Card.Title>Login in order to like, comment and post!</Card.Title>
                 <Button 
                     disabled={loading} 
                     onClick={!loading ? signUserIn : null}
