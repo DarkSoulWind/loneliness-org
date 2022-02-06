@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase-config';
-import { updateDoc, doc, arrayUnion, arrayRemove, deleteDoc } from 'firebase/firestore';
-import { FaHeart, FaTimes } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { updateDoc, doc, arrayUnion, arrayRemove, deleteDoc, query, where, getDocs, collection } from 'firebase/firestore';
+import { FaHeart, FaTimes, FaComment } from 'react-icons/fa';
+import { useNavigate, Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
+import CommentSection from './CommentSection';
+
 const Post = ({ post, setSuccess, posts, setPosts }) => {
     const [liked, setLiked] = useState(post.likes.includes(auth?.currentUser?.uid) || false);
     const [likes, setLikes] = useState(post.likes.length);
+    const [showComments, setShowComments] = useState(false);
+    const [numComments, setNumComments] = useState(0);
+
     const navigate = useNavigate();
+    const commentsCollectionRef = collection(db, 'comments');
+
+    useEffect(() => {
+        const getNumComments = async () => {
+            const q = query(commentsCollectionRef, where('postID', '==', post.id));
+            const data = await getDocs(q);
+            setNumComments(data.docs.map(doc => ({ ...doc.data(), id: doc.id })).length);
+        }
+
+        getNumComments();
+    }, [])
 
     const likePost = async () => {
         if (!auth.currentUser) {
-            navigate('/login');
+            mustBeSignedInPrompt('Login to your account before you can start liking posts.')
             return;
         }
 
@@ -59,6 +75,29 @@ const Post = ({ post, setSuccess, posts, setPosts }) => {
         })
     }
 
+    const mustBeSignedInPrompt = reason => {
+        confirmAlert({
+            title: 'Must be logged in',
+            message: reason,
+            buttons: [{
+                label: 'Go to login page',
+                onClick: () => navigate('/login')
+            },
+            {
+                label: 'Cancel',
+                onClick: () => {return}
+            }]
+        })
+    }
+
+    const commentsClicked = () => {
+        if (auth?.currentUser) {
+            setShowComments(!showComments);
+        } else {
+            mustBeSignedInPrompt('Login to your account before you can start viewing comments.')
+        }
+    }
+
     return (
         <Card style={{'marginTop' : '1em', 'marginInline' : '1em'}}>
             <Card.Header><strong>{post.displayname}</strong> at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}</Card.Header>
@@ -68,12 +107,15 @@ const Post = ({ post, setSuccess, posts, setPosts }) => {
                 <Card.Text>{post.description}</Card.Text>
 
                 <FaHeart size={20} onClick={likePost} style={{ color: liked ? 'red' : 'black' }} />
+                <FaComment size={20} onClick={commentsClicked} style={{ 'marginLeft' : '1rem' }} />
                 {auth?.currentUser?.displayName == post.displayname && <FaTimes size={25} onClick={deleteClicked} style={{'color' : 'black', 'marginLeft' : '1rem'}} />}
                 
             </Card.Body>
             <Card.Footer>
-                    {likes} {likes === 1 ? 'like' : 'likes'}
+                    {likes} {likes === 1 ? 'like' : 'likes'} • {numComments} {numComments === 1 ? 'comment' : 'comments'}
             </Card.Footer>
+
+            {showComments && <CommentSection setNumComments={setNumComments} post={post} />}
         </Card>
     )
   }

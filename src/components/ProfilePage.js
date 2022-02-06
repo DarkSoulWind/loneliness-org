@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase-config';
-import { collection, query, limit, getDocs, orderBy } from 'firebase/firestore';
+import { collection, query, getDocs, orderBy } from 'firebase/firestore';
 import { Container, Button, Card, ListGroup } from 'react-bootstrap';
 
 const ProfilePage = ({ signUserOut }) => {
