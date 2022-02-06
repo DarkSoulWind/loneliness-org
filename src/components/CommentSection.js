@@ -26,7 +26,7 @@ const CommentSection = ({ post }) => {
         }
 
         getComments();
-    }, [commentsCollectionRef, post.id])
+    }, [post.id])
 
     const checkIfValid = () => {
         if (!text) {
@@ -72,6 +72,7 @@ const CommentSection = ({ post }) => {
                 variant='success' 
                 style={{'marginTop' : '1em'}} 
                 dismissible
+                transition
             >
                 {success}
             </Alert>}
