@@ -23,7 +23,7 @@ function App() {
             {isAuth && <Nav.Link as={Link} to='/submit'>Submit</Nav.Link>}
             <Nav.Link as={Link} to='/about'>About</Nav.Link>
             <Nav.Link onClick={() => {
-              if (isAuth) setShowUser(auth?.currentUser)
+              if (isAuth) setShowUser(JSON.parse(localStorage.getItem('user')))
             }} as={Link} to='/login'>{isAuth ? 'Profile' : 'Login'}</Nav.Link>
           </Nav>
         </Container>

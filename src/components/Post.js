@@ -3,7 +3,7 @@ import { auth, db } from '../firebase-config';
 import { updateDoc, doc, arrayUnion, arrayRemove, deleteDoc, query, where, getDocs, collection } from 'firebase/firestore';
 import { FaHeart, FaTimes, FaComment } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
