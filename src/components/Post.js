@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebase-config';
 import { updateDoc, doc, arrayUnion, arrayRemove, deleteDoc, query, where, getDocs, collection } from 'firebase/firestore';
 import { FaHeart, FaTimes, FaComment } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import CommentSection from './CommentSection';
 
-const Post = ({ post, setSuccess, posts, setPosts }) => {
+const Post = ({ post, setSuccess, posts, setPosts, setShowUser }) => {
     const [liked, setLiked] = useState(post.likes.includes(auth?.currentUser?.uid) || false);
     const [likes, setLikes] = useState(post.likes.length);
     const [showComments, setShowComments] = useState(false);
     const [numComments, setNumComments] = useState(0);
+    const [user, setUser] = useState({});
 
     const navigate = useNavigate();
     const commentsCollectionRef = collection(db, 'comments');
+    const usersCollectionRef = collection(db, 'users');
 
     useEffect(() => {
         const getNumComments = async () => {
@@ -27,6 +29,16 @@ const Post = ({ post, setSuccess, posts, setPosts }) => {
 
         getNumComments();
     }, [commentsCollectionRef, post.id])
+
+    useEffect(() => {
+        const getUser = async () => {
+            const q = query(usersCollectionRef, where('displayName', '==', post.displayname));
+            const data = await getDocs(q);
+            setUser(data.docs.map(doc => ({ ...doc.data(), id: doc.id }))[0]);
+        }
+
+        getUser();
+    }, [])
 
     const likePost = async () => {
         if (!auth.currentUser) {
@@ -100,7 +112,13 @@ const Post = ({ post, setSuccess, posts, setPosts }) => {
 
     return (
         <Card style={{'marginTop' : '1em', 'marginInline' : '1em'}}>
-            <Card.Header><strong>{post.displayname}</strong> at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}</Card.Header>
+            <Card.Header>
+
+                { user ? (<Card.Link onClick={() => {
+                setShowUser(user)
+                }} as={Link} to='/login'><strong>{post.displayname}</strong>
+                </Card.Link>) : (<strong>{post.displayname}</strong>)} at {post.date.toDate().toDateString()} {post.date.toDate().toLocaleTimeString()}
+            </Card.Header>
             {post.image && <Card.Img variant='top' src={post.image}/>}
             <Card.Body>
                 <Card.Title>{post.title}</Card.Title>

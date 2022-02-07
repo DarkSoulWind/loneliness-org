@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import LoginPage from '../components/LoginPage';
 import ProfilePage from '../components/ProfilePage';
 
-const Login = ({ isAuth, setIsAuth }) => {
+const Login = ({ isAuth, setIsAuth, user }) => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
@@ -33,7 +33,7 @@ const Login = ({ isAuth, setIsAuth }) => {
     return (
         <div style={{'paddingTop' : '4em'}}>
             {isAuth ? (
-                <ProfilePage signUserOut={signUserOut} />
+                <ProfilePage signUserOut={signUserOut} user={user} />
             ) : (
                 <LoginPage loading={loading} signUserIn={signInWithGoogle} />
             )}

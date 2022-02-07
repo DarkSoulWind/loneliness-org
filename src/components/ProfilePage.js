@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase-config';
+import { db } from '../firebase-config';
 import { collection, query, getDocs, orderBy } from 'firebase/firestore';
 import { Container, Button, Card, ListGroup } from 'react-bootstrap';
 
-const ProfilePage = ({ signUserOut }) => {
+const ProfilePage = ({ signUserOut, user }) => {
     const [posts, setPosts] = useState([]);
-    const user = auth?.currentUser || JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         const getPosts = async () => {
