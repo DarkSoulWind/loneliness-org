@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/loneliness-org/static/css/main.9d3e78e2.css",
-    "main.js": "/loneliness-org/static/js/main.35b6639e.js",
+    "main.js": "/loneliness-org/static/js/main.66449c6f.js",
     "index.html": "/loneliness-org/index.html",
     "main.9d3e78e2.css.map": "/loneliness-org/static/css/main.9d3e78e2.css.map",
-    "main.35b6639e.js.map": "/loneliness-org/static/js/main.35b6639e.js.map"
+    "main.66449c6f.js.map": "/loneliness-org/static/js/main.66449c6f.js.map"
   },
   "entrypoints": [
     "static/css/main.9d3e78e2.css",
-    "static/js/main.35b6639e.js"
+    "static/js/main.66449c6f.js"
   ]
 }
