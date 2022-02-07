@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../firebase-config';
+import { db, auth } from '../firebase-config';
 import { collection, query, getDocs, orderBy } from 'firebase/firestore';
 import { Container, Button, Card, ListGroup } from 'react-bootstrap';
 
@@ -46,7 +46,7 @@ const ProfilePage = ({ signUserOut, user }) => {
 
                 </Card.Body>
             </Card>
-            <Button style={{'marginTop' : '1em'}} onClick={signUserOut}>Sign out</Button>
+            {user.uid === auth?.currentUser?.uid && <Button style={{'marginTop' : '1em'}} onClick={signUserOut}>Sign out</Button>}
         </Container>
     );
 };
