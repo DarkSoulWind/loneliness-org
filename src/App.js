@@ -9,6 +9,14 @@ import Submit from './pages/Submit';
 import About from './pages/About';
 import Login from './pages/Login';
 
+const NoMatch = () => {
+  return (
+    <div>
+      <h1>Page doesn't exist</h1>
+    </div>
+  )
+}
+
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
   const [success, setSuccess] = useState('');

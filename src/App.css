@@ -71,3 +71,53 @@ nav .link {
   background-color: grey;
   color: white;
 }
+
+.aboutPage {
+  color: white;
+  overflow-x: hidden;
+  /* background-image: url(/src/layered-waves-haikei.svg);
+  background-size: auto; */
+}
+
+.custom-shape-divider-top-1644270470 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: -1;
+}
+
+.custom-shape-divider-bottom-1644271346 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1644271346 svg {
+  position: relative;
+  display: block;
+  width: calc(115% + 1.3px);
+  height: 400px;
+}
+
+.custom-shape-divider-bottom-1644271346 .shape-fill {
+  fill: #4238C0;
+}
+
+.spacer {
+  aspect-ratio: 900/600;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+  .layer1 {
+    background-image: url('layered-waves-haikei.svg');
+  }

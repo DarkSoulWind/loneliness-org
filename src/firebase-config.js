@@ -7,14 +7,13 @@ import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDM9oIJXQw6MuelOlpPaGHS3ngEMfmUMgY",
-  authDomain: "loneliness-5c1a4.firebaseapp.com",
-  projectId: "loneliness-5c1a4",
-  storageBucket: "loneliness-5c1a4.appspot.com",
-  messagingSenderId: "265535564384",
-  appId: "1:265535564384:web:e22beb2859926a45e97105"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
