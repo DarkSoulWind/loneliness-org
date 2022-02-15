@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Oswald:wght@300&display=swap');
 
-body {
+body, html {
   font-family: 'Oswald';
+  height: 100%;
+  width: 100%;
   margin: 0;
 }
 
@@ -72,52 +74,27 @@ nav .link {
   color: white;
 }
 
-.aboutPage {
-  color: white;
-  overflow-x: hidden;
-  /* background-image: url(/src/layered-waves-haikei.svg);
-  background-size: auto; */
-}
-
-.custom-shape-divider-top-1644270470 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
   z-index: -1;
 }
 
-.custom-shape-divider-bottom-1644271346 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
 }
 
-.custom-shape-divider-bottom-1644271346 svg {
-  position: relative;
-  display: block;
-  width: calc(115% + 1.3px);
-  height: 400px;
+.aboutPage {
+  overflow-x: hidden;
+  height: 100%;
 }
-
-.custom-shape-divider-bottom-1644271346 .shape-fill {
-  fill: #4238C0;
-}
-
-.spacer {
-  aspect-ratio: 900/600;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-  .layer1 {
-    background-image: url('layered-waves-haikei.svg');
-  }

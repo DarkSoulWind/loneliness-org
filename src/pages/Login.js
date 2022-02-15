@@ -32,6 +32,8 @@ const Login = ({ isAuth, setIsAuth, user }) => {
 
     return (
         <div style={{'paddingTop' : '4em'}}>
+            
+
             {isAuth ? (
                 <ProfilePage signUserOut={signUserOut} user={user} />
             ) : (
