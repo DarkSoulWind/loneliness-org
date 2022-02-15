@@ -1,13 +1,18 @@
 {
   "files": {
-    "main.css": "/loneliness-org/static/css/main.9d3e78e2.css",
-    "main.js": "/loneliness-org/static/js/main.bed64c16.js",
+    "main.css": "/loneliness-org/static/css/main.047c48a0.css",
+    "main.js": "/loneliness-org/static/js/main.5a913cc7.js",
+    "static/media/Homelessman.png": "/loneliness-org/static/media/Homelessman.59f979327785d8075d0b.png",
+    "static/media/Collected-food.png": "/loneliness-org/static/media/Collected-food.837bc811abe95a7427c2.png",
+    "static/media/Group.png": "/loneliness-org/static/media/Group.69acf29c10c38ab9da07.png",
+    "static/media/Clarks.png": "/loneliness-org/static/media/Clarks.a1b08faaef6854e6d058.png",
+    "static/media/layered-waves-haikei.svg": "/loneliness-org/static/media/layered-waves-haikei.fab8512f6df795e5fcd6.svg",
     "index.html": "/loneliness-org/index.html",
-    "main.9d3e78e2.css.map": "/loneliness-org/static/css/main.9d3e78e2.css.map",
-    "main.bed64c16.js.map": "/loneliness-org/static/js/main.bed64c16.js.map"
+    "main.047c48a0.css.map": "/loneliness-org/static/css/main.047c48a0.css.map",
+    "main.5a913cc7.js.map": "/loneliness-org/static/js/main.5a913cc7.js.map"
   },
   "entrypoints": [
-    "static/css/main.9d3e78e2.css",
-    "static/js/main.bed64c16.js"
+    "static/css/main.047c48a0.css",
+    "static/js/main.5a913cc7.js"
   ]
 }
