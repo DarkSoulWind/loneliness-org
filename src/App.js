@@ -9,18 +9,11 @@ import Submit from './pages/Submit';
 import About from './pages/About';
 import Login from './pages/Login';
 
-const NoMatch = () => {
-  return (
-    <div>
-      <h1>Page doesn't exist</h1>
-    </div>
-  )
-}
-
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
   const [success, setSuccess] = useState('');
   const [showUser, setShowUser] = useState(auth?.currentUser || JSON.parse(localStorage.getItem('user')));
+  const [isDisconnected, setIsDisconnected] = useState(false);
 
   return (
     <Router>
@@ -37,7 +30,7 @@ function App() {
         </Container>
       </Navbar>
       <Routes>
-        <Route path='/' element={<Home success={success} setSuccess={setSuccess} setShowUser={setShowUser} />}/>
+        <Route path='/' element={<Home success={success} setSuccess={setSuccess} setShowUser={setShowUser} isDisconnected={isDisconnected} setIsDisconnected={setIsDisconnected} />}/>
         <Route path='/submit' element={<Submit setSuccess={setSuccess} />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/login' element={<Login isAuth={isAuth} setIsAuth={setIsAuth} user={showUser}/>}/>
