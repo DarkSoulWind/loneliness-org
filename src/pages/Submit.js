@@ -100,7 +100,7 @@ const Submit = ({ setSuccess }) => {
     }
 
     return (
-        <Container style={{'padding' : '5em 0em 5em 0em'}}>
+        <Container style={{'padding' : '5em 0em 12em 0em'}}>
             <Card>
                 <Card.Body>
                     <h2>Submit a post</h2>
