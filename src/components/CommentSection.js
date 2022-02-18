@@ -86,7 +86,7 @@ const CommentSection = ({ post }) => {
                 {error}
             </Alert>}
 
-            <Form style={{'marginTop' : '1rem'}}>
+            <Form style={{'marginTop' : '1rem'}} onSubmit={e => e.preventDefault()}>
                 <Container>
                         <Row>
                             <Col>

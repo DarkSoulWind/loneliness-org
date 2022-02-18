@@ -31,7 +31,7 @@ const Login = ({ isAuth, setIsAuth, user }) => {
     }
 
     return (
-        <div style={{'paddingTop' : '4em'}}>
+        <div style={{'padding' : '4em 0em 1em 0em'}}>
             
 
             {isAuth ? (

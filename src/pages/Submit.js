@@ -55,15 +55,17 @@ const Submit = ({ setSuccess }) => {
             setError('Unable to upload file - contents too large.');
             setLoading(false);
         })
-        const file = await response.json();
-        setImage(file.secure_url)
-        console.log(file);
-        setLoading(false);
+        if (response) {
+            const file = await response.json();
+            setImage(file.secure_url)
+            console.log(file);
+            setLoading(false);
+        }
     }
 
     const checkIfValid = () => {
-        if (title.length < 20) {
-            setError('Your title must be at least 20 characters long.')
+        if (title.length < 10) {
+            setError('Your title must be at least 10 characters long.')
             return false;
         } else if (description.length < 100) {
             setError('Your description must be at least 100 characters long.')
@@ -98,7 +100,7 @@ const Submit = ({ setSuccess }) => {
     }
 
     return (
-        <Container style={{'marginTop' : '5em'}}>
+        <Container style={{'padding' : '5em 0em 5em 0em'}}>
             <Card>
                 <Card.Body>
                     <h2>Submit a post</h2>
@@ -106,7 +108,7 @@ const Submit = ({ setSuccess }) => {
                         <Form.Group className='mb-3'>
                             <Form.Label>Title:</Form.Label>
                             <Form.Control onChange={e => setTitle(e.target.value)} placeholder='Post title...'/>
-                            {title.length < 20 && <Form.Text>Please make your title {20 - title.length} characters long.</Form.Text>}
+                            {title.length < 10 && <Form.Text>Please make your title {10 - title.length} characters long.</Form.Text>}
                         </Form.Group>
 
                         <Form.Group className='mb-3'>

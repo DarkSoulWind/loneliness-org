@@ -23,10 +23,12 @@ const Home = ({ success, setSuccess, setShowUser, isDisconnected, setIsDisconnec
     }
 
     getPosts();
+
+    return 
   }, [setPosts, isDisconnected]);
 
   return (
-      <Container style={{'padding' : '4em 0em 2em 0em'}}>
+      <Container style={{'padding' : '4em 0em 12em 0em'}}>
         <NetworkDetector isDisconnected={isDisconnected} setIsDisconnected={setIsDisconnected} />
         {success && <Alert onClose={() => setSuccess('')} variant='success' dismissible>{success}</Alert>}
         {error && <Alert onClose={() => setError('')} variant='error'>{error}</Alert>}
