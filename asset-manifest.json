@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/loneliness-org/static/css/main.f36457eb.css",
-    "main.js": "/loneliness-org/static/js/main.6c2668df.js",
+    "main.css": "/loneliness-org/static/css/main.c5781e49.css",
+    "main.js": "/loneliness-org/static/js/main.c6ee082a.js",
+    "static/media/Raft-Building.jpeg": "/loneliness-org/static/media/Raft-Building.f5f2e49ff2cfcaa48110.jpeg",
+    "static/media/Barking-Library.jpeg": "/loneliness-org/static/media/Barking-Library.ee8c095105d2aa0e3529.jpeg",
     "static/media/Homelessman.png": "/loneliness-org/static/media/Homelessman.59f979327785d8075d0b.png",
     "static/media/Collected-food.png": "/loneliness-org/static/media/Collected-food.837bc811abe95a7427c2.png",
     "static/media/Group.png": "/loneliness-org/static/media/Group.69acf29c10c38ab9da07.png",
-    "static/media/Clarks.png": "/loneliness-org/static/media/Clarks.a1b08faaef6854e6d058.png",
+    "static/media/Care-Packages.jpeg": "/loneliness-org/static/media/Care-Packages.ec1c5f85406901f69360.jpeg",
+    "static/media/NCS-Group.jpeg": "/loneliness-org/static/media/NCS-Group.d23f115b765fd91c7b19.jpeg",
     "static/media/layered-waves-haikei.svg": "/loneliness-org/static/media/layered-waves-haikei.fab8512f6df795e5fcd635ddfb202ca1.svg",
     "index.html": "/loneliness-org/index.html",
-    "main.f36457eb.css.map": "/loneliness-org/static/css/main.f36457eb.css.map",
-    "main.6c2668df.js.map": "/loneliness-org/static/js/main.6c2668df.js.map"
+    "main.c5781e49.css.map": "/loneliness-org/static/css/main.c5781e49.css.map",
+    "main.c6ee082a.js.map": "/loneliness-org/static/js/main.c6ee082a.js.map"
   },
   "entrypoints": [
-    "static/css/main.f36457eb.css",
-    "static/js/main.6c2668df.js"
+    "static/css/main.c5781e49.css",
+    "static/js/main.c6ee082a.js"
   ]
 }
